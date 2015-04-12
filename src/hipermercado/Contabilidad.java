@@ -7,7 +7,7 @@ public class Contabilidad {
     }
     
     public void añadeSaldo(int Saldo){
-        this.saldo=Saldo;
+        this.saldo+=Saldo;
     }
     
     public int dameSaldo(){

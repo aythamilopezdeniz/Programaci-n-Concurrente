@@ -16,6 +16,8 @@ public class Cola {
     public void añadirFinal(){
         if(tamCola<Cola.size()){
             Cola.add(new Cliente());
+            if(Cola.size()>maximoCola)
+                maximoCola=Cola.size();
             /*Cola[tamCola]=new Cliente();
             tamCola++;*/
         }
@@ -24,6 +26,8 @@ public class Cola {
     public void añadirPrincipio(){
         if(tamCola<Cola.size()){
             Cola.add(0, new Cliente());
+            if(Cola.size()>maximoCola)
+                maximoCola=Cola.size();
             /*Cliente[] aux=new Cliente[tamCola];
             for(int i=0;i<Cola.length;i++){
                 aux[i]=Cola[i];
