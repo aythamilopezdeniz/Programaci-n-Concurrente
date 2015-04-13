@@ -22,14 +22,7 @@ public class Main {
         System.out.println("Establezca el número de clientes: ");
         Clientes=leer.nextLine();
         System.out.println("Cajas: "+Cajas+" y Clientes: "+Clientes);*/
-        /*Console();*/
         execute(cajas, Cajas, Clientes, cola, contabilidad);
-    }
-
-    private static void Console() {
-        Supermercado supermercado=new Supermercado();
-        Control control=new Control(supermercado);
-        control.execute();
     }
 
     private static void execute(ArrayList<Caja> cajas, int Cajas, int Clientes, 
@@ -40,6 +33,7 @@ public class Main {
         for(int i=0;i<Cajas;i++){
             cajas.get(i).start();
         }
+        System.out.println("contabilidad "+contabilidad.dameSaldo());
     }
 
     private static int numeroDeCajas() {
