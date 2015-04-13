@@ -12,8 +12,7 @@ public class Main {
         Cajas=numeroDeCajas();
         Clientes=numeroClientes();
         Cola cola=new Cola();
-        ArrayList<Contabilidad> contabilidad=new ArrayList<>();
-        System.out.println("Cajas "+Cajas+" Clientes "+Clientes);
+        Contabilidad contabilidad=new Contabilidad();
         for(int i=0;i<Clientes;i++){
             cola.añadirFinal();
         }
@@ -24,7 +23,7 @@ public class Main {
         Clientes=leer.nextLine();
         System.out.println("Cajas: "+Cajas+" y Clientes: "+Clientes);*/
         /*Console();*/
-        execute(cajas, Cajas, Clientes, cola);
+        execute(cajas, Cajas, Clientes, cola, contabilidad);
     }
 
     private static void Console() {
@@ -33,9 +32,13 @@ public class Main {
         control.execute();
     }
 
-    private static void execute(ArrayList<Caja> cajas, int Cajas, int Clientes, Cola cola) {
+    private static void execute(ArrayList<Caja> cajas, int Cajas, int Clientes, 
+            Cola cola, Contabilidad contabilidad) {
         for (int i=0;i<Cajas; i++) {
-            cajas.add(new Caja(cola, null));
+            cajas.add(new Caja(cola, contabilidad));
+        }
+        for(int i=0;i<Cajas;i++){
+            cajas.get(i).start();
         }
     }
 
@@ -59,7 +62,7 @@ public class Main {
         int clientes = 0;
         boolean state=false;
         while(!state){
-            System.out.print("Establezca el número de clientes: ");
+            System.out.print("Establezca el número de clientes en la cola: ");
             try{
                 clientes= Integer.parseInt(reader.readLine());
                 state=true;

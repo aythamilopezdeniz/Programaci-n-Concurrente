@@ -12,6 +12,10 @@ public class Cola {
         this.maximoCola=0;
         this.tamCola=0;
     }
+
+    public ArrayList<Cliente> getCola() {
+        return Cola;
+    }
     
     public void añadirFinal(){
         if(tamCola<Cola.size()){
