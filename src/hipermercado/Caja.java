@@ -1,4 +1,5 @@
 package hipermercado;
+
 public class Caja extends Thread{
     private Contabilidad contabilidad;
     private static int idUnique=0;
@@ -37,5 +38,7 @@ public class Caja extends Thread{
 
     @Override
     public void run() {
+        for(int i=0;i<cola.Cola.size();i++){
+        }
     }
 }
