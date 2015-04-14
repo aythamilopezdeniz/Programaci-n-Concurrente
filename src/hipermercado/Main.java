@@ -12,16 +12,13 @@ public class Main {
         Cajas=numeroDeCajas();
         Clientes=numeroClientes();
         Cola cola=new Cola();
+        cola.setTamCola(Clientes);
         Contabilidad contabilidad=new Contabilidad();
         for(int i=0;i<Clientes;i++){
             cola.añadirFinal();
+            System.out.println("Cliente "+cola.getCola().get(i).dameNombre()+" Carro "+
+                    cola.getCola().get(i).damePrecioCarro());
         }
-        /*Scanner leer=new Scanner(System.in);
-        System.out.println("Establezca en número de cajas en funcionamiento: ");
-        Cajas=Integer.parseInt(leer.nextInt());
-        System.out.println("Establezca el número de clientes: ");
-        Clientes=leer.nextLine();
-        System.out.println("Cajas: "+Cajas+" y Clientes: "+Clientes);*/
         execute(cajas, Cajas, Clientes, cola, contabilidad);
     }
 
@@ -32,6 +29,11 @@ public class Main {
         }
         for(int i=0;i<Cajas;i++){
             cajas.get(i).start();
+        }
+        for(int i=0;i<cajas.size();i++){
+            contabilidad.añadeSaldo(cajas.get(i).getContabilidad().dameSaldo());
+            //System.out.println(cajas.get(i).getContabilidad().dameSaldo());
+            //System.out.println(cajas.get(i).getCola().getCola().get(0).dameNombre());
         }
         System.out.println("contabilidad "+contabilidad.dameSaldo());
     }

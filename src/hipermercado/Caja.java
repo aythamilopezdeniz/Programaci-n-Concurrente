@@ -38,8 +38,13 @@ public class Caja extends Thread{
 
     @Override
     public void run() {
-        for(int i=0;i<cola.getCola().size();i++){
-            contabilidad.añadeSaldo((int) cola.getCola().get(i).damePrecioCarro());
+        synchronized(cola){
+            for(int i=0;i<cola.getCola().size();i++){
+                contabilidad.añadeSaldo(cola.getCola().get(i).damePrecioCarro());
+                cola.sacar();
+                //System.out.println(cola.getCola().get(i).damePrecioCarro());
+            }
+            System.out.println(contabilidad.dameSaldo());
         }
     }
 }

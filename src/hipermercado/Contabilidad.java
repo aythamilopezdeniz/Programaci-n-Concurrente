@@ -1,16 +1,16 @@
 package hipermercado;
 public class Contabilidad {
-    private int saldo;
+    private double saldo;
 
     public Contabilidad() {
         this.saldo=0;
     }
     
-    public void añadeSaldo(int Saldo){
+    public synchronized void añadeSaldo(double Saldo){
         this.saldo+=Saldo;
     }
     
-    public int dameSaldo(){
+    public synchronized double dameSaldo(){
         return saldo;
     }
 }
