@@ -11,40 +11,21 @@ public class Caja extends Thread{
         this.cola=Cola;
         this.id=idUnique++;
     }
-
-    public Contabilidad getContabilidad() {
-        return contabilidad;
-    }
-
-    public void setContabilidad(Contabilidad contabilidad) {
-        this.contabilidad = contabilidad;
-    }
-
-    public static int getIdUnique() {
-        return idUnique;
-    }
-
-    public static void setIdUnique(int idUnique) {
-        Caja.idUnique = idUnique;
-    }
-
-    public Cola getCola() {
-        return cola;
-    }
-
-    public void setCola(Cola cola) {
-        this.cola = cola;
-    }
-
+    
     @Override
     public void run() {
-        synchronized(cola){
-            for(int i=0;i<cola.getCola().size();i++){
-                contabilidad.añadeSaldo(cola.getCola().get(i).damePrecioCarro());
-                cola.sacar();
-                //System.out.println(cola.getCola().get(i).damePrecioCarro());
+        double contabilidadCaja=0;
+        while(true){
+            Cliente cliente=cola.sacar();
+            if(cliente==null)break;
+            System.out.println("Sacar cliente "+cliente.dameNombre()+
+                    " Precio Carro "+cliente.damePrecioCarro());
+            contabilidadCaja+=cliente.damePrecioCarro();
+            try {
+                sleep(500);
+            } catch (InterruptedException ex) {
             }
-            System.out.println(contabilidad.dameSaldo());
         }
+        contabilidad.añadeSaldo(contabilidadCaja);
     }
 }
