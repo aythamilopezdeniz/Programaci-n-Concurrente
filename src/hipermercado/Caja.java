@@ -22,7 +22,7 @@ public class Caja extends Thread{
                     " Precio Carro "+cliente.damePrecioCarro());
             contabilidadCaja+=cliente.damePrecioCarro();
             try {
-                sleep(500);
+                sleep((long) (contabilidadCaja/10000));
             } catch (InterruptedException ex) {
             }
         }
