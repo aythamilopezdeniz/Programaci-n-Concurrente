@@ -1,9 +1,12 @@
 package hipermercado;
 import java.util.ArrayList;
+import java.util.Date;
 public class Cola {
     private int maximoCola;
     private ArrayList<Cliente> cola;
     private boolean cerrada;
+    private Date date;
+    
 
     public Cola() {
         cola=new ArrayList<>();
@@ -13,28 +16,35 @@ public class Cola {
 
     public synchronized void añadirFinal(Cliente cliente){
         if(cerrada==true)return;
+        int random=((int) (Math.random()*5)+1);
+        try {
+            wait(random*1000);
+        } catch (InterruptedException ex) {}
         cola.add(cliente);
+        date=new Date();
+        System.out.println("Hora "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+
+                " Cliente "+cliente.toString()+" añadido a la cola");
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
-        notify();
+        notifyAll();
     }
 
     public synchronized void añadirPrincipio(Cliente cliente){
         if(cerrada==true)return;
         cola.add(0, cliente);
+        System.out.println("Hola "+date.getHours()+date.getMinutes()+date.getSeconds()+
+                "Cliente "+cliente.toString());
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
-        notify();
+        notifyAll();
     }
     
     public synchronized Cliente sacar(){
-        //if(cola.isEmpty())return null;
         while(!cerrada){
             try {
                 wait(10000);
                 if(cola.size()>0)break;
-            } catch (InterruptedException ex) {
-            }
+            } catch (InterruptedException ex) {}
         }
         if(cola.isEmpty())return null;
         return cola.remove(0);
