@@ -11,9 +11,9 @@ public class Cola {
         this.cerrada=false;
     }
 
-    public synchronized void añadirFinal(){
+    public synchronized void añadirFinal(Cliente cliente){
         if(cerrada==true)return;
-        cola.add(new Cliente());
+        cola.add(cliente);
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
         notify();
@@ -28,13 +28,15 @@ public class Cola {
     }
     
     public synchronized Cliente sacar(){
-        if(cola.isEmpty())return null;
-        /*while(!cerrada){
+        //if(cola.isEmpty())return null;
+        while(!cerrada){
             try {
                 wait(10000);
+                if(cola.size()>0)break;
             } catch (InterruptedException ex) {
             }
-        }*/
+        }
+        if(cola.isEmpty())return null;
         return cola.remove(0);
     }
     
