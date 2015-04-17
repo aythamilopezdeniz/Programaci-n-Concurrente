@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 public class Cola {
     private int maximoCola;
-    private ArrayList<Cliente> cola;
+    private final ArrayList<Cliente> cola;
     private boolean cerrada;
     private Date date;
     

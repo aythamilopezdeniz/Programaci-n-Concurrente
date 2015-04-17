@@ -39,7 +39,7 @@ public class Main {
             } catch (InterruptedException ex) {
             }
         }
-        System.out.println("Contabilidad "+contabilidad.dameSaldo());
+        System.out.println("Contabilidad del Hipermercado "+contabilidad.dameSaldo()+"€");
     }
     
     /*private static void execute(int Cajas, int Clientes, Cola cola, Contabilidad contabilidad) {

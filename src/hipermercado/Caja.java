@@ -1,9 +1,12 @@
 package hipermercado;
 
+import java.util.Date;
+
 public class Caja extends Thread{
-    private Contabilidad contabilidad;
+    private final Contabilidad contabilidad;
     private static int idUnique=0;
-    private Cola cola;
+    private final Cola cola;
+    private Date date;
     private int id=0;
 
     public Caja(Cola Cola, Contabilidad Contabilidad) {
@@ -19,15 +22,16 @@ public class Caja extends Thread{
         while(true){
             Cliente cliente=cola.sacar();
             if(cliente==null)break;
-            System.out.print("Sacar cliente "+cliente.dameNombre()+
-                    " Precio Carro "+cliente.damePrecioCarro());
+            date=new Date();
+            System.out.println("Hora "+date.getHours()+":"+date.getMinutes()+":"+
+                    date.getSeconds()+" Sacar cliente "+cliente.toString());
             contabilidadCaja+=cliente.damePrecioCarro();
             try {
-                sleep((long) (contabilidadCaja/10000));
+                sleep((long) ((contabilidadCaja/10)*1000));
                 System.out.println(" Cliente cobrado");
-            } catch (InterruptedException ex) {
-            }
+            } catch (InterruptedException ex) {}
         }
         contabilidad.añadeSaldo(contabilidadCaja);
+        System.out.println("Cerrando caja y registrando contabilidad.");
     }
 }
