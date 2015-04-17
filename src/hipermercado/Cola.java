@@ -23,7 +23,7 @@ public class Cola {
         cola.add(cliente);
         date=new Date();
         System.out.println("Hora "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+
-                " Cliente "+cliente.toString()+" añadido a la cola");
+                " Cliente "+cliente.toString()+" añadido al final de la cola");
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
         notifyAll();
@@ -33,7 +33,7 @@ public class Cola {
         if(cerrada==true)return;
         cola.add(0, cliente);
         System.out.println("Hola "+date.getHours()+date.getMinutes()+date.getSeconds()+
-                "Cliente "+cliente.toString());
+                "Cliente "+cliente.toString()+" añadido al principio de la cola");
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
         notifyAll();

@@ -40,6 +40,7 @@ public class Main {
             }
         }
         System.out.println("Contabilidad del Hipermercado "+contabilidad.dameSaldo()+"€");
+        System.out.println("Tamaño máximo de la cola: "+cola.tamañoMáximo());
     }
 
     private static int numeroDeCajas() {
@@ -49,7 +50,7 @@ public class Main {
         while(!state){
             System.out.print("Establezca en número de cajas en funcionamiento: ");
             try{
-                cajas= Integer.parseInt(reader.readLine());
+                cajas=Integer.parseInt(reader.readLine());
                 state=true;
             }catch(Exception e){
             }
@@ -64,7 +65,7 @@ public class Main {
         while(!state){
             System.out.print("Establezca el número de clientes en la cola: ");
             try{
-                clientes= Integer.parseInt(reader.readLine());
+                clientes=Integer.parseInt(reader.readLine());
                 state=true;
             }catch(Exception e){
             }
