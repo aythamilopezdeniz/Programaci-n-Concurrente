@@ -41,21 +41,7 @@ public class Main {
         }
         System.out.println("Contabilidad del Hipermercado "+contabilidad.dameSaldo()+"€");
     }
-    
-    /*private static void execute(int Cajas, int Clientes, Cola cola, Contabilidad contabilidad) {
-        /*long t1=System.currentTimeMillis();
-        long t2=System.currentTimeMillis();
-        int j=0;
-        while((t2-t1)/0.001<1){
-            t2=System.currentTimeMillis();
-            if(j==Clientes)break;
-            j++;
-            nuevoCliente(cola);
-        }
-        cola.cerrar();
-        //Esperar un tiempo para añadir nuevo cliente a la cola        
-        //esperar hasta los 60s para cerrar la cola.
-    }*/
+
     private static int numeroDeCajas() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int cajas = 0;
@@ -93,7 +79,6 @@ public class Main {
             System.out.println("tiempo de espera "+time);
         } catch (InterruptedException ex) {
         }
-        //System.out.println("Añadiendo Cliente");
         cola.añadirFinal(new Cliente());
     }
 }/*public synchronized void añadirFinal(Cliente c) {

@@ -23,11 +23,11 @@ public class Caja extends Thread{
             Cliente cliente=cola.sacar();
             if(cliente==null)break;
             date=new Date();
-            System.out.println("Hora "+date.getHours()+":"+date.getMinutes()+":"+
-                    date.getSeconds()+" Sacar cliente "+cliente.toString());
             contabilidadCaja+=cliente.damePrecioCarro();
             try {
                 sleep((long) ((contabilidadCaja/10)*1000));
+                System.out.print("Hora "+date.getHours()+":"+date.getMinutes()+":"+
+                    date.getSeconds()+" Sacar cliente "+cliente.toString());
                 System.out.println(" Cliente cobrado");
             } catch (InterruptedException ex) {}
         }
