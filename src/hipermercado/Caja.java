@@ -32,6 +32,6 @@ public class Caja extends Thread{
             } catch (InterruptedException ex) {}
         }
         contabilidad.añadeSaldo(contabilidadCaja);
-        System.out.println("Cerrando caja y registrando contabilidad.");
+        System.out.println("Cerrando caja y registrando contabilidad."); 
     }
 }
