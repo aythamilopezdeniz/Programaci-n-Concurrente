@@ -1,11 +1,11 @@
 package hipermercado;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.GregorianCalendar;
 public class Cola {
     private int maximoCola;
     private final ArrayList<Cliente> cola;
     private boolean cerrada;
-    private Date date;
+    private GregorianCalendar date;
     
 
     public Cola() {
@@ -21,9 +21,10 @@ public class Cola {
             wait(random*1000);
         } catch (InterruptedException ex) {}
         cola.add(cliente);
-        date=new Date();
-        System.out.println("Hora "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+
-                " Cliente "+cliente.toString()+" añadido al final de la cola");
+        date=new GregorianCalendar();
+        System.out.println("Hora "+date.getTime().getHours()+":"+date.getTime().getMinutes()+":"
+                +date.getTime().getSeconds()+" Cliente "+cliente.toString()+
+                " añadido al final de la cola");
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
         notifyAll();
@@ -32,8 +33,9 @@ public class Cola {
     public synchronized void añadirPrincipio(Cliente cliente){
         if(cerrada==true)return;
         cola.add(0, cliente);
-        System.out.println("Hola "+date.getHours()+date.getMinutes()+date.getSeconds()+
-                "Cliente "+cliente.toString()+" añadido al principio de la cola");
+        System.out.println("Hola "+date.getTime().getHours()+":"+date.getTime().getMinutes()+":"+
+                date.getTime().getSeconds()+" Cliente "+cliente.toString()+
+                " añadido al principio de la cola");
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
         notifyAll();
