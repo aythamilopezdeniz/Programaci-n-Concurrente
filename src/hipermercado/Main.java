@@ -3,7 +3,6 @@ package hipermercado;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Random;
 
 
 public class Main {
@@ -44,8 +43,8 @@ public class Main {
     }
 
     private static int numeroDeCajas() {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int cajas = 0;
+        BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+        int cajas=0;
         boolean state=false;
         while(!state){
             System.out.print("Establezca en número de cajas en funcionamiento: ");
@@ -59,8 +58,8 @@ public class Main {
     }
     
     private static int numeroClientes(){
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int clientes = 0;
+        BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+        int clientes=0;
         boolean state=false;
         while(!state){
             System.out.print("Establezca el número de clientes en la cola: ");
@@ -71,16 +70,6 @@ public class Main {
             }
         }
         return clientes;
-    }
-
-    private static void nuevoCliente(Cola cola) {
-        int time=new Random().nextInt(5);
-        try {
-            Thread.sleep((long) (time/0.001));
-            System.out.println("tiempo de espera "+time);
-        } catch (InterruptedException ex) {
-        }
-        cola.añadirFinal(new Cliente());
     }
 }/*public synchronized void añadirFinal(Cliente c) {
         if (cerrada == false){
