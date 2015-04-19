@@ -16,7 +16,6 @@ public class Main {
         final Cola cola=new Cola();
         Contabilidad contabilidad=new Contabilidad();
         execute(numeroCajas, numeroClientes, cola, contabilidad);
-        
     }
 
     private static void execute(int numeroCajas, int numeroClientes, 
@@ -28,6 +27,7 @@ public class Main {
             cajas.get(i).start();
             System.out.println("Abriendo Caja "+(i+1));
         }
+        //DuendeAveria duende=new DuendeAveria(cajas);
         for(int i=0;i<numeroClientes;i++){
             cola.añadirFinal(new Cliente());
         }

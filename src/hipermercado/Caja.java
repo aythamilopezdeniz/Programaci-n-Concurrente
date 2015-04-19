@@ -1,6 +1,5 @@
 package hipermercado;
 
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Caja extends Thread{
@@ -30,7 +29,9 @@ public class Caja extends Thread{
                 System.out.print("Hora "+date.getTime().getHours()+":"+date.getTime().getMinutes()+":"+
                     date.getTime().getSeconds()+" Sacar cliente "+cliente.toString());
                 System.out.println(" Cliente cobrado");
-            } catch (InterruptedException ex) {}
+            } catch (InterruptedException ex) {
+                cola.añadirPrincipio(cliente);
+            }
         }
         if(contabilidadCaja==0)
             System.out.println("Cerrando caja.");
