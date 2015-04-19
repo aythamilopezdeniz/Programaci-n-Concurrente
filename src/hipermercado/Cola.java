@@ -1,12 +1,13 @@
 package hipermercado;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 public class Cola {
     private int maximoCola;
     private final ArrayList<Cliente> cola;
     private boolean cerrada;
-    private GregorianCalendar date;
-    
 
     public Cola() {
         cola=new ArrayList<>();
@@ -21,10 +22,10 @@ public class Cola {
             wait(random*1000);
         } catch (InterruptedException ex) {}
         cola.add(cliente);
-        date=new GregorianCalendar();
-        System.out.println("Hora "+date.getTime().getHours()+":"+date.getTime().getMinutes()+":"
-                +date.getTime().getSeconds()+" Cliente "+cliente.toString()+
-                " añadido al final de la cola");
+        System.out.println("Cliente "+cliente.dameNombre()+" añadido al final de la cola "
+                + "a las "+GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"+
+                GregorianCalendar.getInstance().get(Calendar.MINUTE)+":"+
+                GregorianCalendar.getInstance().get(Calendar.SECOND)+".");
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
         notifyAll();
@@ -33,9 +34,10 @@ public class Cola {
     public synchronized void añadirPrincipio(Cliente cliente){
         if(cerrada==true)return;
         cola.add(0, cliente);
-        System.out.println("Hola "+date.getTime().getHours()+":"+date.getTime().getMinutes()+":"+
-                date.getTime().getSeconds()+" Cliente "+cliente.toString()+
-                " añadido al principio de la cola");
+        System.out.println("Cliente "+cliente.dameNombre()+" añadido al principio de la "
+                + "cola a las "+GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"+
+                GregorianCalendar.getInstance().get(Calendar.MINUTE)+":"+
+                GregorianCalendar.getInstance().get(Calendar.SECOND)+".");
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
         notifyAll();
@@ -49,6 +51,10 @@ public class Cola {
             } catch (InterruptedException ex) {}
         }
         if(cola.isEmpty())return null;
+        System.out.println("Sacando a "+cola.get(0).dameNombre()+" de la cola a las "+
+                GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"+
+                GregorianCalendar.getInstance().get(Calendar.MINUTE)+":"+
+                GregorianCalendar.getInstance().get(Calendar.SECOND)+".");
         return cola.remove(0);
     }
     

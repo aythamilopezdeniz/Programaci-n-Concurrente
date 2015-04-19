@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-
 public class Main {
     private static int numeroClientes;
     private static int numeroCajas;
@@ -25,7 +24,7 @@ public class Main {
         }
         for(int i=0;i<numeroCajas;i++){
             cajas.get(i).start();
-            System.out.println("Abriendo Caja "+(i+1));
+            //System.out.println("Abriendo Caja "+(i+1));
         }
         //DuendeAveria duende=new DuendeAveria(cajas);
         for(int i=0;i<numeroClientes;i++){
@@ -38,8 +37,8 @@ public class Main {
             } catch (InterruptedException ex) {
             }
         }
-        System.out.println("Contabilidad del Hipermercado "+contabilidad.dameSaldo()+"€");
-        System.out.println("Tamaño máximo de la cola: "+cola.tamañoMáximo());
+        System.out.println("Contabilidad total del Hipermercado:"+contabilidad.dameSaldo()+"€");
+        System.out.println("Tamaño máximo de la cola:"+cola.tamañoMáximo());
     }
 
     private static int numeroDeCajas() {
