@@ -30,7 +30,7 @@ public class Caja extends Thread{
                         GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"+
                         GregorianCalendar.getInstance().get(Calendar.MINUTE)+":"+
                         GregorianCalendar.getInstance().get(Calendar.SECOND)+".");
-                System.out.println(" Cliente cobrado");
+                System.out.println(" Cliente cobrado.");
             } catch (InterruptedException ex) {
                 System.out.println("Caja "+id+" no operativa, disculpe las molestias.");
                 cola.añadirPrincipio(cliente);
