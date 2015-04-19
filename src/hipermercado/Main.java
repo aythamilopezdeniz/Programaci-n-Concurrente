@@ -14,6 +14,7 @@ public class Main {
         numeroClientes=numeroClientes();
         final Cola cola=new Cola();
         Contabilidad contabilidad=new Contabilidad();
+        tiempoEspera(cola);
         execute(numeroCajas, numeroClientes, cola, contabilidad);
     }
 
@@ -24,7 +25,6 @@ public class Main {
         }
         for(int i=0;i<numeroCajas;i++){
             cajas.get(i).start();
-            //System.out.println("Abriendo Caja "+(i+1));
         }
         //DuendeAveria duende=new DuendeAveria(cajas);
         for(int i=0;i<numeroClientes;i++){
@@ -70,20 +70,19 @@ public class Main {
         }
         return clientes;
     }
-}/*public synchronized void añadirFinal(Cliente c) {
-        if (cerrada == false){
-            try {
-                int rnd = ((int)(Math.random()*5)+1);
-                System.out.println("Esperando "+"("+rnd+")"+" segundos para agregar al siguiente cliente");
-                wait(rnd*1000);
-            }catch(InterruptedException e){}
-            miCola.add(c);
-            System.out.println(dameHora()+" Cliente "+c.toString()+" añadido al final de la cola.");
-            notifyAll();
-        }
-        private static void generaClientes (int c){
-        for (int i=1;i<=c;i++){
-            //colaClientes.start();
-            colaClientes.añadirFinal(new Cliente());;
-        }
-    }*/
+
+    private static void tiempoEspera(final Cola cola) {
+        new Thread(){
+
+            @Override
+            public void run() {
+                try {
+                    sleep(5000);
+                } catch (InterruptedException ex) {
+                }
+                cola.cerrar();
+                System.out.println("La cola de clientes ha sido cerrada.");
+            }
+        }.start();
+    }
+}
