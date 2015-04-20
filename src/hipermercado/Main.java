@@ -16,6 +16,7 @@ public class Main {
         Contabilidad contabilidad=new Contabilidad();
         tiempoEspera(cola);
         execute(numeroCajas, numeroClientes, cola, contabilidad);
+        Thread.interrupted();
     }
 
     private static void execute(int numeroCajas, int numeroClientes, 
@@ -77,8 +78,9 @@ public class Main {
             @Override
             public void run() {
                 try {
-                    sleep(60000);
+                    wait(60000);
                 } catch (InterruptedException ex) {
+                    cola.cerrar();
                 }
                 cola.cerrar();
                 System.out.println("La cola para pagar ha cerrada. Vuelva en otro momento.");
