@@ -77,11 +77,11 @@ public class Main {
             @Override
             public void run() {
                 try {
-                    sleep(5000);
+                    sleep(60000);
                 } catch (InterruptedException ex) {
                 }
                 cola.cerrar();
-                System.out.println("La cola de clientes ha sido cerrada.");
+                System.out.println("La cola para pagar ha cerrada. Vuelva en otro momento.");
             }
         }.start();
     }

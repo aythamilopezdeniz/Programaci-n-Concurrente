@@ -37,9 +37,10 @@ public class Caja extends Thread{
             }
         }
         if(contabilidadCaja==0)
-            System.out.println("Caja Cerrada.");
-        else
-            System.out.println("Cerrando caja y registrando contabilidad."); 
-        contabilidad.añadeSaldo(contabilidadCaja);
+            System.out.println("Caja "+id+" Cerrada.");
+        else{
+            System.out.println("Cerrando caja "+id+" y registrando contabilidad."); 
+            contabilidad.añadeSaldo(contabilidadCaja);
+        }
     }
 }
