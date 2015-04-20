@@ -22,10 +22,11 @@ public class Cola {
             wait(random*1000);
         } catch (InterruptedException ex) {}
         cola.add(cliente);
-        System.out.println("Cliente "+cliente.dameNombre()+" añadido al final de la cola "
-                + "a las "+GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"+
-                GregorianCalendar.getInstance().get(Calendar.MINUTE)+":"+
-                GregorianCalendar.getInstance().get(Calendar.SECOND)+".");
+        System.out.print("Cliente "+cliente.dameNombre()+" añadido al final de la cola a las ");
+        Main.dameHora(GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY), 
+                GregorianCalendar.getInstance().get(Calendar.MINUTE), 
+                GregorianCalendar.getInstance().get(Calendar.SECOND));
+        System.out.println(".");
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
         notifyAll();
@@ -34,10 +35,11 @@ public class Cola {
     public synchronized void añadirPrincipio(Cliente cliente){
         if(cerrada==true)return;
         cola.add(0, cliente);
-        System.out.println("Cliente "+cliente.dameNombre()+" añadido al principio de la "
-                + "cola a las "+GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"+
-                GregorianCalendar.getInstance().get(Calendar.MINUTE)+":"+
-                GregorianCalendar.getInstance().get(Calendar.SECOND)+".");
+        System.out.print("Cliente "+cliente.dameNombre()+" añadido al principio de la cola a las ");
+        Main.dameHora(GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY), 
+                GregorianCalendar.getInstance().get(Calendar.MINUTE), 
+                GregorianCalendar.getInstance().get(Calendar.SECOND));
+        System.out.println(".");
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
         notifyAll();
@@ -51,10 +53,11 @@ public class Cola {
             } catch (InterruptedException ex) {}
         }
         if(cola.isEmpty())return null;
-        System.out.println("Sacando a "+cola.get(0).dameNombre()+" de la cola a las "+
-                GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"+
-                GregorianCalendar.getInstance().get(Calendar.MINUTE)+":"+
-                GregorianCalendar.getInstance().get(Calendar.SECOND)+".");
+        System.out.print("Sacando a "+cola.get(0).dameNombre()+" de la cola a las ");
+        Main.dameHora(GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY), 
+                GregorianCalendar.getInstance().get(Calendar.MINUTE), 
+                GregorianCalendar.getInstance().get(Calendar.SECOND));
+        System.out.println(".");
         return cola.remove(0);
     }
     

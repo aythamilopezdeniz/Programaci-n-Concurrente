@@ -12,10 +12,11 @@ public class Contabilidad {
     
     public synchronized void añadeSaldo(double Saldo){
         this.saldo+=Saldo;
-        System.out.println("Añadiendo saldo a la contabilidad "+Saldo+"€ a las "+
-                GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"+
-                GregorianCalendar.getInstance().get(Calendar.MINUTE)+":"+
-                GregorianCalendar.getInstance().get(Calendar.SECOND)+".");
+        System.out.print("Añadiendo saldo a la contabilidad "+Saldo+"€ a las ");
+        Main.dameHora(GregorianCalendar.getInstance().get(Calendar.HOUR_OF_DAY), 
+                GregorianCalendar.getInstance().get(Calendar.MINUTE), 
+                GregorianCalendar.getInstance().get(Calendar.SECOND));
+        System.out.println(".");
     }
     
     public synchronized double dameSaldo(){

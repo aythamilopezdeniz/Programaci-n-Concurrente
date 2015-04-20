@@ -85,4 +85,14 @@ public class Main {
             }
         }.start();
     }
+
+    public static void dameHora(int hora, int minutos, int segundos) {
+        if(minutos<10&&segundos<10)
+            System.out.print(hora+":0"+minutos+":0"+segundos);
+        else if(minutos>=10&&segundos<10)
+            System.out.print(hora+":"+minutos+":0"+segundos);
+        else if(minutos<10&&segundos>=10)
+            System.out.print(hora+":0"+minutos+":"+segundos);
+        else System.out.print(hora+":"+minutos+":"+segundos);;
+    }
 }
