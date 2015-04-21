@@ -15,32 +15,38 @@ public class Main {
         final Cola cola=new Cola();
         Contabilidad contabilidad=new Contabilidad();
         tiempoEspera(cola);
-        execute(numeroCajas, numeroClientes, cola, contabilidad);
+        crearHilosCajas(numeroCajas, numeroClientes, cola, contabilidad);
+        //DuendeAveria duende=new DuendeAveria(cajas);
+        añadirClientes(cajas, cola);
+        esperarHilosCajas(cajas);
+        System.out.println("Contabilidad total del Hipermercado:"+contabilidad.dameSaldo()+"€");
+        System.out.println("Tamaño máximo de la cola:"+cola.tamañoMáximo());
         System.exit(0);
-        //Thread.interrupted();
     }
-
-    private static void execute(int numeroCajas, int numeroClientes, 
-            Cola cola, Contabilidad contabilidad) {
+    
+    private static void crearHilosCajas(int numeroCajas, int numeroClientes, 
+            Cola cola, Contabilidad contabilidad){
         for (int i=0;i<numeroCajas; i++) {
             cajas.add(new Caja(cola, contabilidad));
         }
         for(int i=0;i<numeroCajas;i++){
             cajas.get(i).start();
         }
-        //DuendeAveria duende=new DuendeAveria(cajas);
+    }
+    
+    private static void añadirClientes(ArrayList<Caja> cajas, Cola cola){
         for(int i=0;i<numeroClientes;i++){
             cola.añadirFinal(new Cliente());
         }
         cola.cerrar();
+    }
+    
+    private static void esperarHilosCajas(ArrayList<Caja> cajas){
         for(int i=0;i<cajas.size(); i++){
             try {
                 cajas.get(i).join();
-            } catch (InterruptedException ex) {
-            }
+            } catch (InterruptedException ex) {}
         }
-        System.out.println("Contabilidad total del Hipermercado:"+contabilidad.dameSaldo()+"€");
-        System.out.println("Tamaño máximo de la cola:"+cola.tamañoMáximo());
     }
 
     private static int numeroDeCajas() {
