@@ -29,7 +29,7 @@ public class Cola {
         System.out.println(".");
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
-        notifyAll();
+        notify();
     }
 
     public synchronized void añadirPrincipio(Cliente cliente){
@@ -42,7 +42,7 @@ public class Cola {
         System.out.println(".");
         if(cola.size()>maximoCola)
             maximoCola=cola.size();
-        notifyAll();
+        notify();
     }
     
     public synchronized Cliente sacar(){
